@@ -43,7 +43,7 @@
   var brickOffsetTop = 30;
   var brickOffsetLeft = 30;
   var score = 0;
-  var lives = 3;
+  var lives = 5;
 
   var bricks = [];
   for(var c=0; c<brickColumnCount; c++) {
@@ -79,10 +79,18 @@
     if(relativeX > 0 && relativeX < canvas.width) {
       let pX = relativeX - paddleWidth/2;
       if(paddleX < pX){
-        for (paddleX; paddleX < pX; paddleX++);
+        for (let i = paddleX ; i < pX; i++){
+          setTimeout(() => {
+            paddleX++;
+          }, "100");
+        }
       }
       else{
-        for (paddleX; paddleX > pX; paddleX--);
+        for (let i = paddleX ; i > pX; i--){
+          setTimeout(() => {
+            paddleX--;
+          }, "100");
+        }
       }
 
 
