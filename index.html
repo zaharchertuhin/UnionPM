@@ -18,7 +18,7 @@
 
   function init(){
     VK.api("users.get", {"fields": "first_name,last_name", "v":"5.73"}, function (data) {
-      alert("Name:" + data.response[0].first_name);
+      console.log("Name:" + data.response[0].first_name);
     });
   }
 
