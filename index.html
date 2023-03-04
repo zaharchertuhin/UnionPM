@@ -35,9 +35,12 @@
 <h1>UnionPM Game</h1>
 <p>Comm 7</p>
 
-<canvas id="myCanvas" style="width: 100vw;height: 320px;max-width: 480px;"></canvas>
+<canvas id="myCanvas" style="width: 480px;height: 320px;"></canvas>
+
+
 
 <script>
+
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   var ballRadius = 10;
@@ -58,7 +61,7 @@
   var brickOffsetTop = 30;
   var brickOffsetLeft = 30;
   var score = 0;
-  var lives = 30000;
+  var lives = 3;
 
   var bricks = [];
   for(var c=0; c<brickColumnCount; c++) {
@@ -70,7 +73,6 @@
 
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
-  document.addEventListener("touchmove", mouseMoveHandler, false);
   document.addEventListener("mousemove", mouseMoveHandler, false);
 
   function keyDownHandler(e) {
@@ -204,6 +206,7 @@
   }
 
   draw();
+
 </script>
 
 </body>
