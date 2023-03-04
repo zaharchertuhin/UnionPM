@@ -16,31 +16,13 @@
   vkBridge.send('VKWebAppInit');
 </script>
 
-<script type="text/javascript">
-//   VK.init(function() {
-//   init();
-// }, function() {
-//   alert("init err!");
-// }, '5.131');
-//
-//   function init(){
-//     VK.api("users.get", {"fields": "first_name,last_name", "v":"5.73"}, function (data) {
-//       console.log("Name:" + data.response[0].first_name);
-//     });
-//   }
-
-
-</script>
-
 <h1>UnionPM Game</h1>
-<p>Comm 7</p>
-
-<canvas id="myCanvas" style="width: 480px;height: 320px;"></canvas>
+<p>Comm 10</p>
 
 
+<canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
-
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   var ballRadius = 10;
@@ -74,6 +56,7 @@
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   document.addEventListener("mousemove", mouseMoveHandler, false);
+  document.addEventListener("touchmove", mouseMoveHandler, false);
 
   function keyDownHandler(e) {
     if(e.code  == "ArrowRight") {
