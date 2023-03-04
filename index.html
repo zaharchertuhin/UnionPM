@@ -28,25 +28,20 @@
   // Sends event to client
   vkBridge.send('VKWebAppInit');
 
+  const screenWidth = window.screen.width
 </script>
 <div class="title" style="margin: 30px;">
 <h1>UnionPM Game</h1>
 <p>Comm 16</p>
 </div>
 
-<canvas id="myCanvas"  height="250"></canvas>
+<canvas id="myCanvas" width="380" height="250"></canvas>
 
 <div style="justify-content: center;display: flex;">
   <input type="range" id="pos" name="pos"
-         min="25" max="335" value="170" style="margin-top: 15px; -webkit-appearance: none; outline: none !important;">
+         min="25" max="335" step="10" value="170" style="width: 330px; margin-top: 15px; -webkit-appearance: none; outline: none !important;">
 <!--  <label for="pos">Pos</label>-->
 </div>
-
-<script>
-  const screenWidth = window.screen.width;
-  document.getElementById('myCanvas').setAttribute("style","width:"+screenWidth+"px");
-  document.getElementById('pos').setAttribute("style","width:"+screenWidth+"px");
-</script>
 
 <script>
 
