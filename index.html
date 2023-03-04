@@ -9,18 +9,25 @@
 
 <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 
-<script type="text/javascript">
-  VK.init(function() {
-  init();
-}, function() {
-  alert("init err!");
-}, '5.131');
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 
-  function init(){
-    VK.api("users.get", {"fields": "first_name,last_name", "v":"5.73"}, function (data) {
-      console.log("Name:" + data.response[0].first_name);
-    });
-  }
+<script>
+  // Sends event to client
+  vkBridge.send('VKWebAppInit');
+</script>
+
+<script type="text/javascript">
+//   VK.init(function() {
+//   init();
+// }, function() {
+//   alert("init err!");
+// }, '5.131');
+//
+//   function init(){
+//     VK.api("users.get", {"fields": "first_name,last_name", "v":"5.73"}, function (data) {
+//       console.log("Name:" + data.response[0].first_name);
+//     });
+//   }
 
 
 </script>
