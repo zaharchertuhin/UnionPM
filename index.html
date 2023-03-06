@@ -31,6 +31,21 @@
 <script>
   vkBridge.send('VKWebAppInit');
 
+  const response = await fetch("https://api.vk.com/method/user_id", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: `{
+    "Authorization" : "Bearer"
+  }`,
+  });
+
+  response.json().then(data => {
+    console.log(JSON.stringify(data));
+  });
+
 </script>
 <div class="title" style="margin: 30px 30px 10px 30px; display: flex;">
   <h3 style="

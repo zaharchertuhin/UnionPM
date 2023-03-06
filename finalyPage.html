@@ -21,9 +21,8 @@
 
 <!--<canvas id="myCanvas" width="380" height="250"></canvas>-->
 
-<form name="quiz" action="mailto:zaharchertuhin@gmail.com" method="post"
-      enctype="text/plain" class="quiz-form">
-  <div class="quiz-section">
+<form name="quiz" id="tg" action="javascript:check();" class="quiz-form">
+  <div class="quizsection">
     <h2>Пойдешь на концерт?</h2>
 
     <div class="answer">
@@ -31,13 +30,36 @@
     </div>
 
     <div class="answer">
-      <input name="q2" value="false" id="value2" type="radio" /> Нет, не смогу(
+      <input name="q1" value="false" id="value2" type="radio" /> Нет, не смогу(
     </div>
   </div>
   <input value="Submit" type="submit" />
 </form>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
+  const TOKEN = "799604842:AAHnQSUGIui4pUP-PO4wBtSkYNCdxmWYc4E";
+  const CHAT_ID = "-1001826284527";
+  const URI_API = 'https://api.telegram.org/bot799604842:AAHnQSUGIui4pUP-PO4wBtSkYNCdxmWYc4E/sendMessage';
+
+  document.getElementById("tg").addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let message = "";
+
+    if(this.q1.value === "true"){
+      message += "Новый зритель!";
+    }
+    else{
+      message += "Лох отказался идти";
+    }
+
+    axios.post(URI_API,{
+      chat_id: CHAT_ID,
+      text: message
+    });
+
+  }, false);
+
 
 var result;
 
