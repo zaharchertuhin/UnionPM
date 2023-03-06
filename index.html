@@ -29,14 +29,14 @@
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 
 <script>
-  // Sends event to client
   vkBridge.send('VKWebAppInit');
 
   const screenWidth = window.screen.width
 </script>
 <div class="title" style="margin: 30px;">
   <h1>UnionPM Game</h1>
-  <p>ver 0.1.16</p>
+  <p>Level 1</p>
+  <p>Version: 0.2.1 Alpha</p>
   <a href="https://vk.com/wixby43" style="text-decoration: none;">Author: Wix</a>
 </div>
 
@@ -47,6 +47,10 @@
          min="25" max="335" step="10" value="170"
          style="width: 330px; margin-top: 15px; -webkit-appearance: none; outline: none !important;">
   <!--  <label for="pos">Pos</label>-->
+</div>
+
+<div class="nxtLvlBtn">
+  <a href="level2.html"><button>Next Level</button></a>
 </div>
 
 <script>
@@ -88,7 +92,6 @@
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   // document.addEventListener("mousemove", mouseMoveHandler, false);
-  // document.addEventListener("touchstart", mouseMoveHandler, false);
 
   function newPos() {
     paddleX = slider.value - 25;
