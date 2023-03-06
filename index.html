@@ -35,6 +35,8 @@
 </script>
 
 <script>
+  let TOKEN = "";
+
   vkBridge.send('VKWebAppInit');
 
   vkBridge.send('VKWebAppGetAuthToken', {
@@ -43,7 +45,7 @@
   })
     .then((data) => {
       if (data.access_token) {
-        console.log(data.access_token);
+        TOKEN = data.access_token;
       }
     })
     .catch((error) => {
@@ -62,7 +64,7 @@
         'Access-Control-Allow-Methods': 'POST'
       },
       body: `{
-      "Authorization" : "Bearer b210de27b210de27b210de2769b1023379bb210b210de27d613528d5149706c2052e05b"
+      "Authorization" : "Bearer " + ${TOKEN}
     }`,
     });
 
