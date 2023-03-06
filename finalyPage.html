@@ -19,14 +19,46 @@
   <a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a>
 </div>
 
-<canvas id="myCanvas" width="380" height="250"></canvas>
+<!--<canvas id="myCanvas" width="380" height="250"></canvas>-->
 
-<div style="justify-content: center;display: flex;">
-  <input type="range" id="pos" name="pos"
-         min="25" max="335" step="10" value="170"
-         style="width: 330px; margin-top: 15px; -webkit-appearance: none; outline: none !important;">
+<form name="quiz" action="mailto:zaharchertuhin@gmail.com" method="post"
+      enctype="text/plain" class="quiz-form">
+  <div class="quiz-section">
+    <h2>Пойдешь на концерт?</h2>
 
-</div>
+    <div class="answer">
+      <input name="q1" value="true" id="value1" type="radio" checked="checked" /> Конечно!
+    </div>
+
+    <div class="answer">
+      <input name="q2" value="false" id="value2" type="radio" /> Нет, не смогу(
+    </div>
+  </div>
+  <input value="Submit" type="submit" />
+</form>
+
+<script type="text/javascript">
+
+var result;
+
+function check() {
+  var question = 1;
+  var value1 = 0;
+  var value2= 0;
+
+  result = "";
+
+  var choice;
+    var q = document.forms['quiz'].elements['q'+question];
+    for (var i = 0; i < q.length; i++) {
+      if (q[i].checked) {
+        choice = q[i].value;
+        console.log(choice);
+      }
+    }
+  }
+
+</script>
 
 <div class="nxtLvlBtn">
   <a href="index.html"><button>First Level</button></a>
