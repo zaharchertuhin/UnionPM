@@ -4,6 +4,47 @@
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
+
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+
+<script>
+  let TOKEN = "";
+
+  vkBridge.send('VKWebAppInit');
+
+  vkBridge.send('VKWebAppGetAuthToken', {
+    app_id:51572062,
+    scope: ''
+  })
+    .then((data) => {
+      if (data.access_token) {
+        TOKEN = data.access_token;
+        // console.log(JSON.stringify(data));
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+  let id, first_name, last_name
+
+  vkBridge.send('VKWebAppGetUserInfo', {
+  })
+    .then((data) => {
+      if (data.id) {
+        id= data.id;
+        first_name=data["first_name"];
+        last_name=data["last_name"];
+
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+
+</script>
+
 <body>
 <div class="title" style="margin: 30px 30px 10px 30px; display: flex;">
   <h3 style="
@@ -22,7 +63,7 @@
 <!--<canvas id="myCanvas" width="380" height="250"></canvas>-->
 
 <form name="quiz" id="tg" action="javascript:check();" class="quiz-form">
-  <div class="quizsection">
+  <div class="quiz-section">
     <h2>Пойдешь на концерт?</h2>
 
     <div class="answer">
@@ -37,7 +78,6 @@
 </form>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
-  const TOKEN = "799604842:AAHnQSUGIui4pUP-PO4wBtSkYNCdxmWYc4E";
   const CHAT_ID = "-1001826284527";
   const URI_API = 'https://api.telegram.org/bot799604842:AAHnQSUGIui4pUP-PO4wBtSkYNCdxmWYc4E/sendMessage';
 
@@ -47,10 +87,10 @@
     let message = "";
 
     if(this.q1.value === "true"){
-      message += "Новый зритель!";
+      message = "Новый зритель! " + last_name + " " + first_name + " id: " + id ;
     }
     else{
-      message += "Лох отказался идти";
+      message += "Лох отказался идти:" + last_name + " " + first_name + " id: " + id;
     }
 
     axios.post(URI_API,{
@@ -61,18 +101,16 @@
   }, false);
 
 
-var result;
+let result;
 
 function check() {
-  var question = 1;
-  var value1 = 0;
-  var value2= 0;
+  let question = 1;
 
   result = "";
 
-  var choice;
-    var q = document.forms['quiz'].elements['q'+question];
-    for (var i = 0; i < q.length; i++) {
+  let choice;
+    let q = document.forms['quiz'].elements['q'+question];
+    for (let i = 0; i < q.length; i++) {
       if (q[i].checked) {
         choice = q[i].value;
         console.log(choice);
