@@ -34,9 +34,12 @@
   async function getId() {
     const response = await fetch("https://api.vk.com/method/user_id", {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods':'POST'
       },
       body: `{
       "Authorization" : "Bearer b210de27b210de27b210de2769b1023379bb210b210de27d613528d5149706c2052e05b"
