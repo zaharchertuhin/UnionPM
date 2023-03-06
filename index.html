@@ -46,6 +46,18 @@
     .then((data) => {
       if (data.access_token) {
         TOKEN = data.access_token;
+        // console.log(JSON.stringify(data));
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+
+  vkBridge.send('VKWebAppGetUserInfo', {
+  })
+    .then((data) => {
+      if (data.id) {
         console.log(JSON.stringify(data));
       }
     })
@@ -54,34 +66,34 @@
       console.log(error);
     });
 
-  async function doRequest() {
-    let response = await fetch("https://api.vk.com/method/user_id", {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST'
-      },
-      body: `{
-      "Authorization" : "Bearer " + ${TOKEN}
-    }`,
-    });
-
-    if (response.ok){
-      let ret = await response.json();
-      return JSON.parse(ret.data);
-    }
-    else{
-      return response.status;
-    }
-
-  }
-  doRequest().then(data => {
-    console.log(data);
-
-  });
+  // async function doRequest() {
+  //   let response = await fetch("https://api.vk.com/method/user_id", {
+  //     method: 'POST',
+  //     mode: 'no-cors',
+  //     headers: {
+  //
+  //       'Content-Type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //       'Access-Control-Allow-Methods': 'POST'
+  //     },
+  //     body: `{
+  //     "Authorization" : "Bearer " + ${TOKEN}
+  //   }`,
+  //   });
+  //
+  //   if (response.ok){
+  //     let ret = await response.json();
+  //     return JSON.parse(ret.data);
+  //   }
+  //   else{
+  //     return response.status;
+  //   }
+  //
+  // }
+  // doRequest().then(data => {
+  //   console.log(data);
+  //
+  // });
 
 
 </script>
