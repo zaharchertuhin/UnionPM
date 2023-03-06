@@ -27,9 +27,29 @@
 <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
 
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+<script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
+<script src="https://vk.com/js/api/xd_connection.js"  type="text/javascript"></script>
+<script>
+
+
+</script>
 
 <script>
   vkBridge.send('VKWebAppInit');
+
+  vkBridge.send('VKWebAppGetAuthToken', {
+    app_id:51572062,
+    scope: ''
+  })
+    .then((data) => {
+      if (data.access_token) {
+        console.log(data.access_token);
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
 
   async function doRequest() {
     let response = await fetch("https://api.vk.com/method/user_id", {

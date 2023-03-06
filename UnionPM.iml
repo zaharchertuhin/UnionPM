@@ -6,5 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@vkontakte/vk-bridge" level="application" />
     <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="openapi" level="application" />
+    <orderEntry type="library" name="xd_connection" level="application" />
   </component>
 </module>
