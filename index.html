@@ -111,7 +111,7 @@
     e.preventDefault();
 
     let message = "";
-    let dob
+
 
     if(this.q1.value === "true"){
       message = "Новый зритель! " + last_name + " " + first_name + " id: " + id ;
@@ -153,8 +153,8 @@
 
   let canvas = document.getElementById("myCanvas");
   let ctx = canvas.getContext("2d");
-  let x2 = canvas.width / 2;
-  let y2 = canvas.height - 30;
+  let x = canvas.width / 2;
+  let y = canvas.height - 30;
   let dx = 2;
   let dy = -2;
   let ballRadius = 10;
