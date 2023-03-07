@@ -17,8 +17,8 @@
     scope: ''
   })
     .then((data) => {
-      if (data.access_token) {
-        TOKEN = data.access_token;
+      if (data["access_token"]) {
+        TOKEN = data["access_token"];
         // console.log(JSON.stringify(data));
       }
     })
@@ -60,18 +60,16 @@
   <a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a>
 </div>
 
-<!--<canvas id="myCanvas" width="380" height="250"></canvas>-->
-
 <form name="quiz" id="tg" action="javascript:check();" class="quiz-form">
   <div class="quiz-section">
     <h2>Пойдешь на концерт?</h2>
 
     <div class="answer">
-      <input name="q1" value="true" id="value1" type="radio" checked="checked" /> Конечно!
+      <label for="value1"></label><input name="q1" value="true" id="value1" type="radio" checked="checked" /> Конечно!
     </div>
 
     <div class="answer">
-      <input name="q1" value="false" id="value2" type="radio" /> Нет, не смогу(
+      <label for="value2"></label><input name="q1" value="false" id="value2" type="radio" /> Нет, не смогу(
     </div>
   </div>
   <input value="Submit" type="submit" />
