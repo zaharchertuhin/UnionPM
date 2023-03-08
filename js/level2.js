@@ -89,6 +89,12 @@ function newPos() {
   console.log(slider.value)
 }
 
+function drawScore() {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText("Score: " + score, 8, 20);
+}
+
 function drawLevel2() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBricks2();
@@ -134,9 +140,5 @@ function drawLevel2() {
 
 }
 
-function drawScore() {
-  ctx.font = "16px Arial";
-  ctx.fillStyle = "#0095DD";
-  ctx.fillText("Score: " + score, 8, 20);
-}
+export default drawLevel2;
 

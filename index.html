@@ -26,9 +26,45 @@
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script type="text/javascript" src="js/vk_employer.js"></script>
-<script type="text/javascript" src="js/tg_employer.js"></script>
-<script type="text/javascript" src="js/level1.js"></script>
+<script type="text/javascript" >
+
+  let TOKEN = "";
+
+  vkBridge.send('VKWebAppInit');
+
+  vkBridge.send('VKWebAppGetAuthToken', {
+    app_id:51572062,
+    scope: ''
+  })
+    .then((data) => {
+      if (data["access_token"]) {
+        TOKEN = data["access_token"];
+        // console.log(JSON.stringify(data));
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+  let id, first_name, last_name
+
+  vkBridge.send('VKWebAppGetUserInfo', {
+  })
+    .then((data) => {
+      if (data.id) {
+        id= data.id;
+        first_name=data["first_name"];
+        last_name=data["last_name"];
+
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+
+
+</script>
 
 <body style="background-color: white; height: 100%; overflow: hidden">
 
@@ -68,6 +104,51 @@
   </div>
   <input value="Submit" type="submit" />
 </form>
+
+<script type="text/javascript" >
+
+  const CHAT_ID = "-1001826284527";
+  const URI_API = 'https://api.telegram.org/bot799604842:AAHnQSUGIui4pUP-PO4wBtSkYNCdxmWYc4E/sendMessage';
+
+  document.getElementById("tg").addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let message = "";
+
+
+    if (this.q1.value === "true") {
+      message = "Новый зритель! " + last_name + " " + first_name + " id: " + id;
+    } else {
+      message += "Лох отказался идти: " + last_name + " " + first_name + " id: " + id;
+    }
+
+    axios.post(URI_API, {
+      chat_id: CHAT_ID,
+      text: message
+    });
+
+  }, false);
+
+  let result;
+
+  function check() {
+    let question = 1;
+
+    result = "";
+
+    let choice;
+    let q = document.forms['quiz'].elements['q' + question];
+    for (let i = 0; i < q.length; i++) {
+      if (q[i].checked) {
+        choice = q[i].value;
+        console.log(choice);
+      }
+    }
+  }
+
+</script>
+<script type="text/javascript" src="js/level1.js"></script>
+<script type="text/javascript" src="js/level2.js"></script>
 
 </body>
 </html>
