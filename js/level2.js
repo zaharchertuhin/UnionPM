@@ -27,6 +27,7 @@ function newPos() {
 }
 
 function drawLevel2() {
+  document.querySelector('#levelIndex').textContent = "Level 2";
   document.querySelector('#gameWin').style.display = 'none';
   // document.querySelector('#pos').style.display = 'block';
   let oldCanv = document.getElementById('myCanvas');
