@@ -21,6 +21,7 @@
     }
 
   </style>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
@@ -66,6 +67,8 @@
 
 </script>
 
+<script type="module" src="js/level1.js"></script>
+
 <body style="background-color: white; height: 100%; overflow: hidden">
 
 <div class="title" style="margin: 30px 30px 10px 30px; display: flex;">
@@ -78,19 +81,57 @@
 
   <p style="
     width: 100%;
-">Version: 0.3.4 Alpha</p>
+">Version: 0.4.1 Alpha</p>
   <a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a>
 </div>
+<div id="js-container">
+  <canvas id="myCanvas" width="380" height="550"></canvas>
+  <div
+    id="gameWin"
+    style="
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      /*-webkit-text-stroke: 3px black;*/
+    "
+  >
+    YOU WIN!
+  <div id="nextLevelBtn" style="
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: none;
+    ">
+    <a >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Next level->>
+    </a>
 
-<canvas id="myCanvas" width="380" height="250"></canvas>
+  </div>
+  </div>
 
-<div style="justify-content: center;display: flex;">
-<label for="pos"></label><input type="range" id="pos" name="pos"
-                                min="25" max="335" step="10" value="170"
-                                style="width: 330px; margin-top: 15px; -webkit-appearance: none; outline: none !important;">
-</div>
+<!--<div style="justify-content: center;display: flex;">-->
+<!--<label for="pos"></label><input type="range" id="pos" name="pos"-->
+<!--                                min="25" max="335" step="10" value="170"-->
+<!--                                style="width: 330px; margin-top: 15px; -webkit-appearance: none; outline: none !important; display: none;">-->
 
-<form name="quiz" id="tg" action="javascript:check();" class="quiz-form">
+<!--</div>-->
+
+
+
+<form name="quiz" id="tg" action="javascript:check();" class="quiz-form" style="display: none;">
   <div class="quiz-section">
     <h2>Пойдешь на концерт?</h2>
 
@@ -147,8 +188,8 @@
   }
 
 </script>
-<script type="text/javascript" src="js/level1.js"></script>
-<script type="text/javascript" src="js/level2.js"></script>
+<script type="module" src="js/level2.js"></script>
+<!--<script type="module" src="js/level3.js"></script>-->
 
 </body>
 </html>

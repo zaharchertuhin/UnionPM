@@ -1,4 +1,6 @@
-import 'level2.js';
+import {drawLevel2} from '/js/level2.js';
+
+
 
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
@@ -20,8 +22,10 @@ for (let i = 0; i < brickCount; i++) {
 let coords = [{x: 100, y: 200,}, {x: 200, y: 100,}, {x: 150, y: 150,}];
 
 function win() {
-  alert("YOU WIN, CONGRATS!");
-  drawLevel2();
+  // alert("YOU WIN, CONGRATS!");
+  // drawLevel2();
+  document.querySelector('#gameWin').style.display = 'flex';
+  document.querySelector('#nextLevelBtn').style.display = 'block';
   score = 0;
   console.log("Win")
 }
