@@ -69,6 +69,27 @@
 
 <body style="background-color: white; height: 100%; overflow: hidden">
 
+<!--<div class="a-header" style="-->
+<!--position: relative;-->
+<!--		float: left;-->
+<!--		width: 100%;-->
+<!--    margin-bottom: 20px;-->
+<!--		text-align: center;-->
+<!--    z-index: 99;-->
+<!--		font-family: 'Raleway', sans-serif;-->
+<!--		font-weight: 400;-->
+<!--		color: #333;">-->
+<!--  <input type="checkbox" name="main-nav" id="main-nav" class="burger-check">-->
+<!--  <label for="main-nav" class="burger menu"><span></span></label>-->
+<!--  <ul>-->
+<!--    <li><a><h3 style="&ndash;&gt;-->
+<!--&lt;!&ndash;    width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;">UnionPM Game</h3></a></li>-->
+<!--    <li><a class="active">Version: 0.4.1 Alpha</a></li>-->
+<!--    <li><a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a></li>-->
+<!--  </ul>-->
+<!--</div>-->
+
 <div class="title" style="margin: 20px 20px 10px 20px; display: flex;">
   <h3 style="
     width: 100%;
@@ -82,7 +103,8 @@
 ">Version: 0.4.1 Alpha</p>
 <!--  <a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a>-->
 </div>
-<div id="js-container">
+<div id="js-container" style="
+    width: 100%;">
   <canvas id="myCanvas" width="380" height="550"></canvas>
   <div
     style="
@@ -361,7 +383,18 @@
 
   }
 
+  const image = new Image()
 
+  image.onload = () => {
+    animate()
+  }
+  image.src = 'img/gameMap.png'
+
+  function animate() {
+    const animationId = requestAnimationFrame(animate)
+
+    ctx.drawImage(image, 0, 0);
+  }
 
 </script>
 
