@@ -668,9 +668,7 @@
   image.src = 'img/gameMap.png';
 
   function drawLevel2() {
-
       animate()
-
   }
 
   const enemies = []
@@ -687,7 +685,7 @@
   }
 
   let buildPosX = 10;
-  let buildPosY = 350;
+  let buildPosY = 300;
 
   document.getElementById('level2-btns').addEventListener('click', (event) => {
     if ( coins - 50 >= 0) {
@@ -718,6 +716,17 @@
 
   const explosions = []
   spawnEnemies(enemyCount)
+
+  function winLevel2() {
+    console.log("Win");
+    document.querySelector('#gameWin').style.display = 'flex';
+    document.querySelector('#level2-btns').style.display = 'none';
+    document.querySelector('#levelIndex').textContent = "Final";
+
+    cancelAnimationFrame(requestAnimationFrame(animate))
+    // canvas.clearRect(0, 0, canvas.width, canvas.height);
+
+  }
 
   function animate() {
     const animationId = requestAnimationFrame(animate)
@@ -755,12 +764,15 @@
 
     // tracking total amount of enemies
     if (enemies.length === 0) {
-      if(enemyCount <= 9){
+      if(enemyCount < 9){
       enemyCount += 2
       spawnEnemies(enemyCount)
+      console.log("Enemy Count: " + enemyCount)
       }
       else{
         console.log("Max enemy")
+        winLevel2();
+
       }
     }
 
@@ -804,7 +816,7 @@
             }
           }
 
-          console.log(projectile.enemy.health)
+          // console.log(projectile.enemy.health)
           explosions.push(
             new Sprite({
               position: { x: projectile.position.x, y: projectile.position.y },
