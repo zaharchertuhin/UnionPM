@@ -15,10 +15,10 @@
       margin: 0 auto;
     }
 
-    input[type='range']::-webkit-slider-thumb {
-      width: 20px;
-      height: 20px
-    }
+    /*input[type='range']::-webkit-slider-thumb {*/
+    /*  width: 20px;*/
+    /*  height: 20px*/
+    /*}*/
 
   </style>
   <link rel="stylesheet" href="css/main.css">
@@ -67,40 +67,20 @@
 
 </script>
 
-<body style="background-color: white; height: 100%; overflow: hidden">
+<body style="background: #222222;
+	font-family: 'Lato', sans-serif; height: 100%; overflow: hidden">
 
-<!--<div class="a-header" style="-->
-<!--position: relative;-->
-<!--		float: left;-->
-<!--		width: 100%;-->
-<!--    margin-bottom: 20px;-->
-<!--		text-align: center;-->
-<!--    z-index: 99;-->
-<!--		font-family: 'Raleway', sans-serif;-->
-<!--		font-weight: 400;-->
-<!--		color: #333;">-->
-<!--  <input type="checkbox" name="main-nav" id="main-nav" class="burger-check">-->
-<!--  <label for="main-nav" class="burger menu"><span></span></label>-->
-<!--  <ul>-->
-<!--    <li><a><h3 style="&ndash;&gt;-->
-<!--&lt;!&ndash;    width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;">UnionPM Game</h3></a></li>-->
-<!--    <li><a class="active">Version: 0.4.1 Alpha</a></li>-->
-<!--    <li><a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a></li>-->
-<!--  </ul>-->
-<!--</div>-->
-
-<div class="title" style="margin: 20px 20px 10px 20px; display: flex;">
+<div class="title" style="margin: 20px 20px 10px 20px; display: flex;color: white;">
   <h3 style="
     width: 100%;
 ">UnionPM Game</h3>
   <p style="min-width: 100px;" id="levelIndex">Level 1</p>
 </div>
-<div  style="margin: 10px 20px 10px 20px; display: flex;">
+<div  style="margin: 10px 20px 10px 20px; display: flex;color: white;">
 
   <p style="
     width: 100%;
-">Version: 0.5.1 Alpha</p>
+">Version: 0.5.4 Alpha</p>
 <!--  <a href="https://vk.com/wixby43" style="text-decoration: none; min-width: 100px;">Author: Wix</a>-->
 </div>
 <div id="js-container" style="
@@ -216,8 +196,7 @@
       -webkit-text-stroke: 2px black;
       display: flex;
       align-items: center;
-    "
-  >
+    ">
 
     <div id="level2-btns" style="display: none; align-items: center">
 
@@ -226,24 +205,33 @@
       </button>
 
     </div>
-
   </div>
-
 </div>
 
 <form name="quiz" id="tg" action="javascript:check();" class="quiz-form" style="display: none;">
-  <div class="quiz-section">
-    <h2>Пойдешь на концерт?</h2>
+  <div class="container">
 
-    <div class="answer">
-      <label for="value1"></label><input name="q1" value="true" id="value1" type="radio" checked="checked" /> Конечно!
-    </div>
+    <h2 style="color: white;">Пойдешь на концерт?</h2>
 
-    <div class="answer">
-      <label for="value2"></label><input name="q1" value="false" id="value2" type="radio" /> Нет, не смогу(
-    </div>
+    <ul>
+      <li>
+        <input type="radio" value="true" id="value1" name="selector">
+        <label for="value1">Конечно!</label>
+
+        <div class="check"></div>
+      </li>
+
+      <li>
+        <input type="radio" value="false" id="value2" name="selector">
+        <label for="value2">К сожалению не смогу(</label>
+
+        <div class="check"><div class="inside"></div></div>
+      </li>
+
+      <input value="Submit" type="submit" />
+
+    </ul>
   </div>
-  <input value="Submit" type="submit" />
 </form>
 <!--Send Statistics-->
 <script type="text/javascript" >
@@ -256,7 +244,7 @@
 
     let message = "";
 
-    if (this.q1.value === "true") {
+    if (this.selector.value === "true") {
       message = "Новый зритель! " + last_name + " " + first_name + " id: " + id;
     } else {
       message += "Лох отказался идти: " + last_name + " " + first_name + " id: " + id;
@@ -661,7 +649,7 @@
   let enemyCount = 3
   let paddleWidth = 75;
   let activeTile = undefined;
-  const buildings = [];
+  let buildings = [];
   let paddleX = (canvas.width - paddleWidth) / 2;
 
   const image = new Image();
@@ -721,9 +709,15 @@
     console.log("Win");
     document.querySelector('#gameWin').style.display = 'flex';
     document.querySelector('#level2-btns').style.display = 'none';
+    document.querySelector('#level2-coins').style.display = 'none';
+    document.querySelector('#level2-hearts').style.display = 'none';
     document.querySelector('#levelIndex').textContent = "Final";
+    document.querySelector('#myCanvas').style.display = 'none';
+    document.querySelector('#tg').style.display = 'block';
 
-    cancelAnimationFrame(requestAnimationFrame(animate))
+    buildings =[];
+
+    drawFinal();
     // canvas.clearRect(0, 0, canvas.width, canvas.height);
 
   }
@@ -770,8 +764,10 @@
       console.log("Enemy Count: " + enemyCount)
       }
       else{
-        console.log("Max enemy")
+        console.log("Max enemy");
+        cancelAnimationFrame(animationId)
         winLevel2();
+
 
       }
     }
@@ -829,6 +825,26 @@
         }
       }
     })
+  }
+
+</script>
+
+<!--Final-->
+<script >
+
+  function drawFinal() {
+    document.querySelector('#gameWin').style.display = 'none';
+
+    let oldCanv2 = document.getElementById('myCanvas');
+    container.parentNode.removeChild(oldCanv2);
+    let canv2 = document.createElement('canvas');
+    canv2.id = 'myCanvas';
+    canv2.width = 380;
+    canv2.height = 550;
+    container.appendChild(canv2);
+    canvas = document.getElementById("myCanvas");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
 </script>
